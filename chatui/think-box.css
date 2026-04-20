@@ -1,0 +1,312 @@
+/* ==========================================
+   THINK BOX - AI Reasoning Display
+   Premium & Feature-Complete Version
+   ========================================== */
+
+.think-box {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    margin: 12px 0 18px 0;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+/* ==========================================
+   SUMMARY HEADER (Clickable Area)
+   ========================================== */
+.think-box summary {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    transition: all 0.2s ease;
+    user-select: none;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+/* Remove default markers for all browsers */
+.think-box summary::-webkit-details-marker {
+    display: none;
+}
+.think-box summary::marker {
+    display: none;
+}
+
+.think-box summary:hover {
+    color: var(--text-primary);
+    background: rgba(6, 182, 212, 0.08);
+}
+
+/* Active/Open state styling */
+.think-box[open] summary {
+    color: var(--accent-cyan);
+    border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+    background: rgba(6, 182, 212, 0.05);
+}
+
+/* ==========================================
+   ICONS & STATUS INDICATORS
+   ========================================== */
+.think-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+/* Animated thinking state */
+.think-box.thinking .think-icon {
+    animation: thinkPulse 1.2s ease-in-out infinite;
+    color: var(--accent-cyan);
+}
+
+@keyframes thinkPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+/* Status text next to icon */
+.think-status {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    margin-left: auto;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.think-box.thinking .think-status::after {
+    content: "Thinking...";
+    animation: blinkText 1.5s step-end infinite;
+}
+
+@keyframes blinkText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ==========================================
+   EXPAND/COLLAPSE INDICATOR (Arrow)
+   ========================================== */
+.think-expand-icon {
+    margin-left: auto;
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+    color: var(--text-muted);
+}
+
+.think-box[open] .think-expand-icon {
+    transform: rotate(180deg);
+    color: var(--accent-cyan);
+}
+
+/* ==========================================
+   CONTENT AREA (The actual thinking text)
+   ========================================== */
+.think-content {
+    padding: 14px 16px 16px 42px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #a1a1aa;
+    border-top: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.think-box[open] .think-content {
+    border-top-color: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* Thinking text styling */
+.think-content p {
+    margin-bottom: 8px;
+}
+
+.think-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Code inside thinking box (smaller, muted) */
+.think-content code {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #c084fc;
+}
+
+.think-content pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.75rem;
+    margin: 8px 0;
+}
+
+/* ==========================================
+   LOADING ANIMATION (While AI is thinking)
+   ========================================== */
+.think-loading {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+}
+
+.think-loading-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    animation: thinkLoadingDot 1.2s ease-in-out infinite;
+}
+
+.think-loading-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.think-loading-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes thinkLoadingDot {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-6px);
+        opacity: 1;
+    }
+}
+
+/* ==========================================
+   THINK BOX VARIANTS
+   ========================================== */
+
+/* Error state - when thinking fails */
+.think-box.error {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.think-box.error .think-icon {
+    color: #ef4444;
+}
+
+.think-box.error summary {
+    color: #ef4444;
+}
+
+/* Complete state - thinking finished */
+.think-box.complete {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.think-box.complete .think-icon {
+    color: #10b981;
+}
+
+.think-box.complete[open] summary {
+    color: #10b981;
+    border-bottom-color: rgba(16, 185, 129, 0.2);
+}
+
+/* Compact mode (for long conversations) */
+.think-box.compact summary {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+}
+
+.think-box.compact .think-content {
+    padding: 8px 12px 12px 36px;
+    font-size: 0.75rem;
+}
+
+/* ==========================================
+   TOOLTIP FOR HOVER
+   ========================================== */
+.think-box summary {
+    position: relative;
+}
+
+.think-box summary:hover::after {
+    content: "Click to expand/collapse AI reasoning";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e1e22;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color);
+    font-weight: normal;
+}
+
+/* ==========================================
+   SCROLLBAR INSIDE THINK CONTENT
+   ========================================== */
+.think-content::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.think-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.think-content::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 10px;
+}
+
+/* ==========================================
+   DARK MODE ENHANCEMENTS
+   ========================================== */
+@media (prefers-color-scheme: dark) {
+    .think-box {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .think-box[open] .think-content {
+        background: rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* ==========================================
+   PRINT STYLES (Optional)
+   ========================================== */
+@media print {
+    .think-box {
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .think-box summary {
+        color: #000;
+    }
+    
+    .think-expand-icon {
+        display: none;
+    }
+    
+    .think-box[open] .think-content {
+        display: block;
+    }
+}

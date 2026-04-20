@@ -1,0 +1,199 @@
+/* ==========================================
+   IMPROVED MARKDOWN STYLES - REAL WORLD AI LOOK
+   ========================================== */
+
+.msg-content {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text-primary);
+}
+
+/* ========== HEADINGS ========== */
+.msg-content h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 1.8rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    letter-spacing: -0.02em;
+}
+
+.msg-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.msg-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 1.2rem 0 0.6rem;
+}
+
+.msg-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    color: var(--accent-cyan);
+}
+
+.msg-content h5, .msg-content h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.8rem 0 0.4rem;
+    color: var(--text-muted);
+}
+
+/* ========== PARAGRAPHS & SPACING ========== */
+.msg-content p {
+    margin-bottom: 1.2rem;
+    line-height: 1.65;
+}
+
+.msg-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== LINKS ========== */
+.markdown-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.markdown-link:hover {
+    border-bottom-color: var(--accent-cyan);
+    color: #67e8f9;
+}
+
+/* ========== LISTS ========== */
+.msg-content ul, 
+.msg-content ol {
+    margin: 0.8rem 0 1.2rem 1.8rem;
+    padding-left: 0.5rem;
+}
+
+.msg-content li {
+    margin-bottom: 0.4rem;
+    line-height: 1.6;
+}
+
+.msg-content li > ul,
+.msg-content li > ol {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Nested list styling */
+.msg-content ul ul {
+    list-style-type: circle;
+}
+
+.msg-content ul ul ul {
+    list-style-type: square;
+}
+
+/* ========== BLOCKQUOTES ========== */
+.msg-content blockquote {
+    border-left: 4px solid var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.05);
+    padding: 0.8rem 1.2rem;
+    margin: 1.2rem 0;
+    border-radius: 0 12px 12px 0;
+    color: var(--text-muted);
+    font-style: normal;
+}
+
+.msg-content blockquote p {
+    margin-bottom: 0.5rem;
+}
+
+.msg-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== INLINE CODE ========== */
+.msg-content code:not(pre code) {
+    background: #1e1e2e;
+    color: #f472b6;
+    font-size: 0.9em;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    white-space: nowrap;
+}
+
+/* ========== HORIZONTAL RULE ========== */
+.msg-content hr {
+    margin: 2rem 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+/* ========== IMAGES ========== */
+.msg-content img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== TABLES (Enhanced) ========== */
+.table-wrapper {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: #0d1117;
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.table-wrapper th {
+    background: #1a1f2e;
+    color: var(--accent-cyan);
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-wrapper td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #27272a;
+    color: #e2e8f0;
+}
+
+.table-wrapper tr:last-child td {
+    border-bottom: none;
+}
+
+.table-wrapper tr:hover td {
+    background: rgba(6, 182, 212, 0.05);
+}
+
+/* ========== TASK LISTS (Checkboxes) ========== */
+.msg-content input[type="checkbox"] {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    accent-color: var(--accent-cyan);
+}
+
+.msg-content .task-list-item {
+    list-style-type: none;
+    margin-left: -1.2rem;
+}
+
+/* ========== FOOTNOTES (if any) ========== */
+.msg-content .footnote-ref {
+    color: var(--accent-cyan);
+    font-size: 0.85em;
+    text-decoration: none;
+}

@@ -1,0 +1,255 @@
+/* ==========================================
+   PYTHON INTERPRETER UI - PREMIUM MODERN
+   Minimal, matte, with subtle depth
+   ========================================== */
+
+/* Buttons container - flex row */
+.code-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Base button styles */
+.run-btn, .copy-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #c9d1d9;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-family: inherit;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 24px;
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    white-space: nowrap;
+    height: 28px;
+    line-height: 1;
+    backdrop-filter: blur(4px);
+}
+
+.run-btn:hover, .copy-btn:hover {
+    background: rgba(6, 182, 212, 0.12);
+    border-color: rgba(6, 182, 212, 0.4);
+    color: var(--accent-cyan, #06b6d4);
+    transform: translateY(-1px);
+}
+
+.run-btn:active, .copy-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Disabled run button */
+.run-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Running state */
+.run-btn.running {
+    opacity: 0.8;
+    pointer-events: none;
+    background: rgba(6, 182, 212, 0.08);
+    border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* Spinner */
+.running-spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent-cyan, #06b6d4);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ========== PREMIUM TERMINAL OUTPUT ========== */
+.python-output {
+    margin-top: 14px;
+    background: #0d1117;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.python-output:hover {
+    border-color: rgba(6, 182, 212, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Terminal header - with icon and copy button */
+.terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    background: #161b22;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #8b949e;
+    font-family: 'Fira Code', monospace;
+}
+
+.terminal-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.terminal-icon {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.terminal-title {
+    text-transform: uppercase;
+}
+
+.copy-output-btn {
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.copy-output-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-cyan);
+}
+
+/* Output content area */
+.terminal-content {
+    margin: 0;
+    padding: 14px;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #e6edf3;
+    background: transparent;
+    max-height: 320px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Success state - subtle accent */
+.python-output.success .terminal-header {
+    border-bottom-color: rgba(16, 185, 129, 0.2);
+}
+.python-output.success .terminal-icon {
+    color: #10b981;
+}
+
+/* Error state */
+.python-output.error .terminal-header {
+    border-bottom-color: rgba(239, 68, 68, 0.2);
+}
+.python-output.error .terminal-icon {
+    color: #ef4444;
+}
+.python-output.error .terminal-content {
+    color: #f87171;
+}
+
+/* Scrollbar */
+.terminal-content::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+.terminal-content::-webkit-scrollbar-track {
+    background: #1e1e2e;
+    border-radius: 10px;
+}
+.terminal-content::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 10px;
+}
+.terminal-content::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+}
+
+/* Empty state hidden */
+.python-output:empty {
+    display: none;
+}
+/* Line numbers container */
+.line-numbers-container {
+    display: flex;
+    background: #0a0c10;
+    border-radius: 12px;
+    overflow: auto;
+}
+.line-numbers {
+    background: #14161f;
+    color: #6b7280;
+    text-align: right;
+    padding: 16px 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    user-select: none;
+    border-right: 1px solid #2d2d3a;
+}
+.line-numbers span {
+    display: block;
+}
+.line-numbers-container pre {
+    flex: 1;
+    margin: 0;
+    padding: 16px;
+}
+
+/* Terminal actions buttons */
+.terminal-actions {
+    display: flex;
+    gap: 8px;
+}
+.terminal-actions button {
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+}
+.terminal-actions button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--accent-cyan);
+}
+.stop-exec-btn svg {
+    fill: #ef4444;
+}
+.stop-exec-btn:hover svg {
+    fill: #ff6b6b;
+}

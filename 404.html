@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 – Kairos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #09090b;
+            color: #f4f4f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .lottie {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 1rem;
+        }
+        h1 {
+            font-size: 7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0.5rem 0;
+        }
+        p {
+            color: #a1a1aa;
+            margin: 1rem 0 1.5rem;
+        }
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-primary {
+            background: #06b6d4;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0891b2;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            border: 1px solid #3f3f46;
+            color: #cbd5e1;
+        }
+        .btn-outline:hover {
+            border-color: #06b6d4;
+            color: white;
+        }
+        @media (max-width: 500px) {
+            h1 { font-size: 5rem; }
+            .lottie { width: 120px; height: 120px; }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="lottie" class="lottie"></div>
+        <h1>404</h1>
+        <h2>Page lost in time?</h2>
+        <p>The page you're looking for doesn't exist. But Kairos is still here.</p>
+        <div class="buttons">
+            <a href="/" class="btn btn-primary">🏠 Home</a>
+            <a href="/c" class="btn btn-outline">💬 Chat with Kairos</a>
+        </div>
+    </div>
+    <script>
+        const anim = lottie.loadAnimation({
+            container: document.getElementById('lottie'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'animations/dolphin_welcome_animation.json'
+        });
+        anim.addEventListener('error', () => {
+            document.getElementById('lottie').innerHTML = '🐬';
+            document.getElementById('lottie').style.fontSize = '5rem';
+        });
+    </script>
+</body>
+</html>

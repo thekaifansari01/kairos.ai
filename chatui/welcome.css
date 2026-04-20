@@ -1,0 +1,160 @@
+/* ==========================================
+   WELCOME SCREEN - PREMIUM & DISTINCT HIERARCHY
+   ========================================== */
+
+.welcome-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    /* ✅ TRANSITION FOR FADE-OUT */
+    transition: opacity 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ✅ Fade-out state (used before hiding) */
+.welcome-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.welcome-content {
+    max-width: 600px;
+    animation: fadeIn 0.6s ease-out;
+    margin-bottom: 0.75rem;
+}
+
+/* ===== ANIMATION CONTAINER ===== */
+#dolphin-animation {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 0.75rem auto;
+    transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    filter: drop-shadow(0 8px 20px rgba(6, 182, 212, 0.3));
+}
+
+#dolphin-animation:empty {
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 4s infinite ease-in-out;
+}
+
+/* ===== GREETING LINE (Hey, Name) ===== */
+.welcome-content .greeting {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 0 0.1rem 0;
+    letter-spacing: -0.3px;
+    color: var(--text-primary);
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+    opacity: 0.9;
+}
+
+/* ===== USERNAME (Cyan Gradient - stands out) ===== */
+#welcome-username {
+    background: linear-gradient(135deg, #22d3ee, #06b6d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: inherit;
+}
+
+/* ===== QUESTION LINE (Bold, Large, Premium Gradient) ===== */
+.welcome-content .question {
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin: 0.5rem 0 0.35rem 0;
+    line-height: 1.25;
+    background: linear-gradient(135deg, #ffffff, #cbd5e1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+/* ===== SUBTITLE (Subtle, Elegant, with accent border/underline) ===== */
+.subtitle {
+    color: var(--text-muted, #94a3b8);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: inline-block;
+    backdrop-filter: blur(2px);
+}
+
+/* Optional: Add a subtle glow to the question on hover */
+.welcome-content .question:hover {
+    filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.3));
+    transition: filter 0.2s ease;
+}
+
+/* ===== INPUT AREA TRANSITION (for smooth slide down) ===== */
+.input-area {
+    transition: bottom 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) !important;
+}
+
+/* ===== WELCOME MODE - HIDE HEADER & DISCLAIMER ===== */
+body.welcome-mode .chat-header {
+    display: none;
+}
+
+body.welcome-mode .disclaimer {
+    display: none;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* ===== DARK MODE ADJUSTMENTS ===== */
+@media (prefers-color-scheme: dark) {
+    .welcome-content .greeting {
+        opacity: 0.85;
+    }
+    .welcome-content .question {
+        background: linear-gradient(135deg, #f1f5f9, #94a3b8);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+    .subtitle {
+        border-top-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    .welcome-content,
+    #dolphin-animation,
+    #dolphin-animation:empty,
+    .welcome-screen,
+    .input-area {
+        animation: none !important;
+        transition: none !important;
+    }
+}
