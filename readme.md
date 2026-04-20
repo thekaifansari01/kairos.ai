@@ -9,7 +9,7 @@
 
 **Kairos** is a production‑ready, full‑featured AI chat application built with vanilla JavaScript. It combines a sleek, minimalist UI with powerful backend capabilities including **multiple LLM providers (Google Gemini, Groq, OpenRouter)**, **local RAG (Retrieval‑Augmented Generation)**, **real‑time Firestore sync**, and **Google Authentication**.
 
-🔗 **Live Demo:** [kairos-one-mocha.vercel.app](https://trykairos.vercel.app)  
+🔗 **Live Demo:** [TryKairos](https://trykairos.vercel.app)  
 📁 **Repository:** https://github.com/thekaifansari01/kairos-ai
 
 ---
