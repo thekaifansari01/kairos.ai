@@ -1,0 +1,185 @@
+/* ==========================================
+   VERTICAL NAVBAR - Top Right Corner
+   No tooltips, no glow, clean & minimal
+   ========================================== */
+
+.floating-navbar {
+    position: fixed;
+    top: 60px; 
+    right: 24px;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    background: rgba(18, 18, 20, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.floating-navbar:hover {
+    background: rgba(18, 18, 20, 0.95);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Nav items - Icon only */
+.nav-item {
+    background: transparent;
+    border: none;
+    color: var(--text-muted, #a1a1aa);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border-radius: 40px;
+    transition: all 0.2s ease;
+    width: 44px;
+}
+
+.nav-item i {
+    font-size: 1.3rem;
+    margin: 0;
+    transition: all 0.2s ease;
+}
+
+.nav-item span {
+    display: none;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.02);
+}
+
+.nav-item:hover i {
+    color: var(--accent-cyan);
+}
+
+.nav-item:active {
+    transform: scale(0.96);
+}
+
+.nav-item.highlight {
+    background: rgba(6, 182, 212, 0.12);
+    color: var(--accent-cyan);
+}
+
+.nav-item.highlight i {
+    color: var(--accent-cyan);
+}
+
+/* ===== IMPROVED MODEL INDICATOR ===== */
+.model-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 0;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 44px;
+    border-radius: 30px;
+}
+
+.model-indicator:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: scale(1.02);
+}
+
+.model-indicator i {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.model-indicator:hover i {
+    color: var(--accent-cyan);
+}
+
+.model-indicator span {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+    max-width: 60px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.model-indicator:hover span {
+    color: var(--accent-cyan);
+}
+
+/* Divider */
+.nav-divider {
+    width: 30px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
+}
+
+/* Scrolled state - subtle shrink */
+.floating-navbar.scrolled {
+    top: 12px;
+    right: 20px;
+    padding: 10px 8px;
+    background: rgba(18, 18, 20, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.floating-navbar.scrolled .nav-item {
+    padding: 8px 10px;
+    width: 40px;
+}
+
+.floating-navbar.scrolled .nav-item i {
+    font-size: 1.1rem;
+}
+
+.floating-navbar.scrolled .model-indicator {
+    padding: 8px 0;
+    width: 40px;
+    gap: 4px;
+}
+
+.floating-navbar.scrolled .model-indicator i {
+    font-size: 1rem;
+}
+
+.floating-navbar.scrolled .model-indicator span {
+    font-size: 0.55rem;
+    max-width: 50px;
+}
+
+/* Animation */
+@keyframes navbarSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.floating-navbar {
+    animation: navbarSlideIn 0.4s ease forwards;
+}
