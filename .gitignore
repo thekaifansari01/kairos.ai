@@ -1,2 +1,6 @@
 .vercel
+<<<<<<< HEAD
 .env*
+=======
+js/modules/core/config.js
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2

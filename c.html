@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>kairos AI – Elite Cybersecurity & Coding Assistant</title>
+<<<<<<< HEAD
     <meta name="description" content="kairos AI: The ultimate open-source cybersecurity & coding assistant. Featuring multi-LLM chat, live Python execution, local RAG, and cloud sync. Built by Kaif Ansari.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Kaif Ansari">
@@ -62,11 +63,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+=======
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Syntax highlighting: atom-one-dark -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Markdown parser & highlight JS -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="https://unpkg.com/edge-tts-universal@0.2.2/dist/browser.js"></script>
 
+<<<<<<< HEAD
+=======
+    <!-- Modular CSS -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
     <link rel="stylesheet" href="chatui/base.css">
     <link rel="stylesheet" href="chatui/sidebar.css">
     <link rel="stylesheet" href="chatui/welcome.css">
@@ -83,6 +97,10 @@
 </head>
 <body>
     <div class="app-container">
+<<<<<<< HEAD
+=======
+        <!-- ================= SIDEBAR ================= -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
@@ -104,26 +122,51 @@
                     </svg>
                 </button>
             </div>
+<<<<<<< HEAD
+=======
+
+            <!-- New Chat Button (sidebar) -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
             <button class="new-chat-btn" onclick="createNewChat()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" style="display: inline-block; vertical-align: middle;">
                     <path fill="currentColor" fill-rule="evenodd" d="M1.5 4A1.5 1.5 0 0 1 3 2.5h10A1.5 1.5 0 0 1 14.5 4v3.25a.75.75 0 0 0 1.5 0V4a3 3 0 0 0-3-3H3a3 3 0 0 0-3 3v11.25a.75.75 0 0 0 1.28.53L4.063 13H8.25a.75.75 0 0 0 0-1.5H3.443l-.22.22L1.5 13.44zM13 14a.75.75 0 0 1-.75-.75v-1.5h-1.5a.75.75 0 0 1 0-1.5h1.5v-1.5a.75.75 0 0 1 1.5 0v1.5h1.5a.75.75 0 0 1 0 1.5h-1.5v1.5A.75.75 0 0 1 13 14" clip-rule="evenodd" />
                 </svg>
                 <span>New Chat</span>
             </button>
+<<<<<<< HEAD
+=======
+
+            <!-- Search chats -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" id="search-input" class="search-input" placeholder="Search chats...">
                 <button id="clear-search" class="clear-search hidden">✕</button>
             </div>
+<<<<<<< HEAD
+=======
+
+            <!-- Chat history list -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
             <div class="chat-history" id="chat-history-container">
                 <div id="chat-history-list" class="chat-history-list">
                     <div class="history-placeholder">Sign in to see your chats</div>
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+
+            <!-- Clear all chats button -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
             <button id="clear-all-chats" class="clear-chats-btn" title="Clear all chats">
                 <i class="fas fa-trash-alt"></i>
                 <span>Clear all chats</span>
             </button>
+<<<<<<< HEAD
+=======
+
+            <!-- Sidebar footer (user info) -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
             <div class="sidebar-footer" id="sidebar-footer">
                 <div id="user-info-container" class="user-info-container">
                     <div class="user-info-placeholder">
@@ -137,6 +180,7 @@
             </div>
         </aside>
 
+<<<<<<< HEAD
         <main class="chat-area">
             <h1 class="sr-only">kairos AI – Advanced Coding & Cybersecurity Workspace</h1>
             <div id="welcome-screen" class="welcome-screen">
@@ -150,6 +194,31 @@
             <div id="chat-header" class="chat-header hidden">
                 <h2 id="chat-title" class="chat-title">New Chat</h2>
             </div>
+=======
+        <!-- ================= MAIN CHAT AREA ================= -->
+        <main class="chat-area">
+            <!-- Welcome screen -->
+            <div id="welcome-screen" class="welcome-screen">
+                <div class="welcome-content">
+                    <!-- Lottie animation container (or fallback emoji) -->
+                    <div id="dolphin-animation" class="big-logo" style="width: 140px; height: 140px; margin: 0 auto;"></div>
+
+                    <h2 class="greeting">Hey, <span id="welcome-username">Guest</span></h2>
+
+                    <!-- Question line: what are we building today? -->
+                    <h2 class="question">Took you long enough to ask.</h2>
+
+                    <p class="subtitle">I've been waiting. Let's go.</p>
+                </div>
+            </div>
+
+            <!-- Chat header -->
+            <div id="chat-header" class="chat-header hidden">
+                <h2 id="chat-title" class="chat-title">New Chat</h2>
+            </div>
+
+            <!-- Floating navbar -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
             <div class="floating-navbar">
                 <button class="nav-item" id="createNewChat()" title="New Chat">
                     <i class="fas fa-plus-circle"></i>
@@ -171,6 +240,10 @@
                     <i class="fas fa-database"></i>
                     <span>Index Project</span>
                 </button>
+<<<<<<< HEAD
+=======
+                <!-- Preferences Button -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
                 <button class="nav-item" id="nav-preferences" title="User Preferences">
                     <i class="fas fa-sliders-h"></i>
                     <span>Preferences</span>
@@ -185,15 +258,32 @@
                     <span>Loading...</span>
                 </div>
             </div>
+<<<<<<< HEAD
             <div id="chat-messages" class="chat-messages hidden"></div>
+=======
+
+            <!-- Chat messages container -->
+            <div id="chat-messages" class="chat-messages hidden"></div>
+
+            <!-- Back to bottom button -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
             <button id="back-to-bottom-btn" class="back-to-bottom" title="Go to bottom">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
             </button>
+<<<<<<< HEAD
             <footer class="input-area">
                 <div class="input-container">
                     <div id="file-attachment-container" class="file-attachment-container"></div>
+=======
+
+            <!-- Input area footer -->
+            <footer class="input-area">
+                <div class="input-container">
+                    <div id="file-attachment-container" class="file-attachment-container"></div>
+
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
                     <div class="input-wrapper">
                         <div class="model-selector">
                             <button id="model-btn" class="model-btn" title="Menu">
@@ -218,6 +308,10 @@
         </main>
     </div>
 
+<<<<<<< HEAD
+=======
+    <!-- ================= GLOBAL MODAL ================= -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
     <div id="global-modal" class="global-modal hidden">
         <div class="modal-overlay"></div>
         <div class="modal-container">
@@ -230,6 +324,10 @@
         </div>
     </div>
 
+<<<<<<< HEAD
+=======
+    <!-- ================= JAVASCRIPT MODULES ================= -->
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
     <script type="importmap">
         {
             "imports": {
@@ -240,6 +338,7 @@
         }
     </script>
 
+<<<<<<< HEAD
     <script src="js/modules/core/config.js"></script>
     <script src="js/modules/core/memory.js"></script>
     <script src="js/ui/formatter.js"></script>
@@ -264,6 +363,54 @@
             navigator.serviceWorker.register('/sw.js')
                 .then(reg => console.log('Service Worker registered', reg.scope))
                 .catch(err => console.error('SW registration failed', err));
+=======
+    <!-- Core Config & Memory (Sabse Pehle) -->
+    <script src="js/modules/core/config.js"></script>
+    <script src="js/modules/core/memory.js"></script>
+
+    <!-- Formatter (UI helpers, code highlighting) -->
+    <script src="js/ui/formatter.js"></script>
+
+    <!-- Firebase & History (ES Modules) -->
+    <script type="module" src="js/modules/auth/firebase.js"></script>
+    <script type="module" src="js/modules/history/history-index.js"></script>
+
+    <!-- API Module -->
+    <script src="js/modules/api/api.js"></script>
+
+    <!-- Toast & Validation (Utils - Toast pehle kyunki validation use karta hai) -->
+    <script src="js/utils/toast.js"></script>
+    <script src="js/utils/validation.js"></script>
+
+    <!-- Main UI Module (Depends on formatter, api, toast, validation) -->
+    <script src="js/ui/ui.js"></script>
+
+    <!-- Feature Guard (Depends on firebase auth state) -->
+    <script src="js/modules/auth/featureGuard.js"></script>
+
+    <!-- Main Core (Depends on UI, API, memory) -->
+    <script src="js/modules/core/main.js"></script>
+
+    <!-- RAG Modules (Independent, can load anytime after core) -->
+    <script src="js/modules/rag/code-chunker.js"></script>
+    <script src="js/modules/rag/vector-store.js"></script>
+    <script src="js/modules/rag/embeddings.js"></script>
+
+    <!-- Optional UI Enhancements -->
+    <script src="js/ui/settings-popup.js"></script>
+    <script src="js/ui/lottie-loader.js"></script>
+    <script src="js/ui/template-suggestions.js"></script>
+
+    <!-- Python Interpreter (Heavy, load last) -->
+    <script src="js/modules/interpreter/interpreter.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('✅ Service Worker registered', reg.scope))
+                .catch(err => console.error('❌ SW registration failed', err));
+>>>>>>> e739f4a74f96da9e6b222ed315eea24e573288d2
         }
     </script>
 </body>
