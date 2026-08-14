@@ -1,0 +1,438 @@
+/* ==========================================
+   CHAT MESSAGES CONTAINER
+   ========================================== */
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 24px 0 120px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+}
+
+/* ==========================================
+   MESSAGE STYLES – CLEAN & MINIMAL WITH SUBTLE COLOR
+   ========================================== */
+
+.message {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.message.slide-up {
+    animation: slideUp 0.25s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    gap: 4px;
+}
+
+.message-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+/* User message alignment */
+.message.user .message-row {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.message.ai .message-row {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/* Avatars hidden – clean UI */
+.msg-avatar {
+    display: none !important;
+}
+
+/* Message content base */
+.msg-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-width: 0;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+/* ===== USER MESSAGE – subtle blue‑gray tint ===== */
+.message.user .msg-content {
+    background: #2a2e3c;
+    color: #f0f0f5;
+    padding: 10px 18px;
+    border-radius: 20px;
+    border-bottom-right-radius: 4px;
+    border: 1px solid #3e4455;
+    width: auto;
+    max-width: 75%;
+    margin-left: auto;
+    font-weight: 400;
+    transition: border-color 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message.user .msg-content:hover {
+    transform: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    background: #2e3240;
+    border-color: #4a5163;
+}
+
+/* ===== AI MESSAGE – clean dark neutral ===== */
+.message.ai .msg-content {
+    background: #1c1c24;
+    color: #e0e0e8;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border-top-left-radius: 4px;
+    border: 1px solid #2e2e38;
+    width: 100%;
+    box-sizing: border-box;
+    transition: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message.ai .msg-content:hover {
+    border-color: #3a3a46;
+    background: #1f1f28;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Remove extra gap when avatar hidden */
+.message.user .message-row {
+    gap: 0;
+}
+
+/* ==========================================
+   MESSAGE ACTIONS (Copy, Edit, Regenerate)
+   ========================================== */
+
+.message-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.message:hover .message-actions,
+.message .message-actions:hover {
+    opacity: 1;
+}
+
+.message.user .message-actions {
+    justify-content: flex-end;
+}
+
+.message.ai .message-actions {
+    justify-content: flex-start;
+    margin-left: 0;
+}
+
+.message-action-btn {
+    background: transparent;
+    border: 1px solid #3a3a44;
+    color: #b0b0b8;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    font-family: inherit;
+}
+
+.message-action-btn:hover {
+    background: #2a2a34;
+    color: #f0f0f0;
+    border-color: #50505c;
+    transform: none;
+}
+
+/* ==========================================
+   LOADING & ERROR STATES
+   ========================================== */
+
+.loading-message,
+.error-message {
+    text-align: center;
+    padding: 1.5rem;
+    color: #9a9aa8;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   BACK TO BOTTOM BUTTON – fixed & clean
+   ========================================== */
+
+.back-to-bottom {
+    position: fixed;
+    bottom: 140px;
+    right: 320px;
+    width: 44px;
+    height: 44px;
+    background: #1e1e26;
+    color: #c0c0cc;
+    border: 1px solid #3a3a44;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s, background 0.15s, border-color 0.15s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-bottom:hover {
+    background: #2a2a36;
+    border-color: #50505c;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.back-to-bottom.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 640px) {
+    .back-to-bottom {
+        right: 16px;
+        bottom: 90px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ==========================================
+   FILE PREVIEW – minimal attachment display
+   ========================================== */
+
+.message-files {
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.files-preview-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+    max-width: 75%;
+}
+
+.file-preview-item {
+    background: #1e1e26;
+    border: 1px solid #3a3a44;
+    border-radius: 30px;
+    padding: 5px 14px 5px 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #d0d0d8;
+    transition: border-color 0.15s;
+    cursor: default;
+    box-shadow: none;
+}
+
+.file-preview-item:hover {
+    transform: none;
+    border-color: #5a5a6a;
+    background: #1e1e26;
+    box-shadow: none;
+}
+
+.file-icon {
+    font-size: 1.1rem;
+}
+
+.file-name {
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+
+.file-size {
+    font-size: 0.65rem;
+    color: #9a9aa8;
+    margin-left: 4px;
+}
+
+.files-preview-header {
+    display: none;
+}
+
+@keyframes premiumFadeIn {
+    0% { opacity: 0; transform: translateY(6px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.file-preview-item {
+    animation: premiumFadeIn 0.2s ease-out forwards;
+}
+
+/* ==========================================
+   CHAT HEADER – clean, centered title
+   ========================================== */
+
+.chat-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(9, 9, 11, 0.98);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #2a2a32;
+    padding: 12px 24px;
+    z-index: 45;
+    margin: 0;
+}
+
+.chat-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #e0e0e8;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hide header when welcome screen is visible */
+.welcome-screen:not(.hidden) ~ .chat-header,
+.chat-messages.hidden + .chat-header {
+    display: none;
+}
+
+/* ==========================================
+   PREVENT OVERLAP WITH STICKY HEADER
+   ========================================== */
+
+.chat-messages .message:first-child {
+    scroll-margin-top: 70px;
+}
+
+.chat-area {
+    padding-top: 0 !important;
+    position: relative;
+}
+
+.floating-navbar {
+    z-index: 1000;
+}
+
+/* ==========================================
+   CODE BLOCKS – minimal monochrome
+   ========================================== */
+
+.message.ai .msg-content pre,
+.message.ai .msg-content code {
+    background: #121218;
+    border-radius: 8px;
+    padding: 0.2em 0.4em;
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    border: 1px solid #2e2e38;
+}
+
+.message.ai .msg-content pre {
+    padding: 14px;
+    overflow-x: auto;
+}
+
+/* ==========================================
+   RESPONSIVE TWEAKS
+   ========================================== */
+
+@media (max-width: 600px) {
+    .message {
+        padding: 0 12px;
+    }
+    .message.user .msg-content {
+        max-width: 85%;
+        padding: 8px 16px;
+    }
+    .message.ai .msg-content {
+        padding: 10px 16px;
+    }
+}
+
+/* ==========================================
+   INLINE EDIT MODE – NO RESIZE, SAME SIZE
+   ========================================== */
+
+/* Edit mode: parent div ki padding hatao, border cyan */
+.message.user.editing .msg-content {
+    padding: 0;
+    border-color: var(--accent-cyan, #06b6d4);
+    transition: border-color 0.2s ease;
+}
+
+/* Textarea: same padding, background, NO min-height, height auto */
+.inline-edit-textarea {
+    width: 100%;
+    padding: 10px 18px;           /* same as original bubble padding */
+    border-radius: 20px;
+    border-bottom-right-radius: 4px;
+    background: #2a2e3c;
+    color: #f0f0f5;
+    border: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    height: auto;                 /* important: height auto, no min-height */
+    overflow-y: auto;
+}
+
+.inline-edit-textarea:focus {
+    outline: none;
+}

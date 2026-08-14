@@ -1,0 +1,388 @@
+/* css/rag-modal.css – Minimal & Clean Design (No Glow, Smooth Animations) */
+
+:root {
+    --rag-bg: rgba(18, 18, 24, 0.96);
+    --rag-border: rgba(255, 255, 255, 0.08);
+    --rag-accent: #3b82f6;
+    --rag-accent-hover: #2563eb;
+    --rag-text: #f4f4f6;
+    --rag-text-muted: #a1a1aa;
+    --rag-danger: #f87171;
+    --rag-danger-bg: rgba(239, 68, 68, 0.12);
+    --rag-success: #10b981;
+    --rag-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --rag-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --rag-transition: all 0.2s ease;
+}
+
+.rag-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: ragFadeIn 0.2s ease-out;
+}
+
+@keyframes ragFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.rag-modal {
+    background: var(--rag-bg);
+    border-radius: 28px;
+    width: 90%;
+    max-width: 720px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--rag-border);
+    box-shadow: var(--rag-shadow-md), 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    animation: ragSlideUp 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+@keyframes ragSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.rag-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--rag-border);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 28px 28px 0 0;
+}
+
+.rag-modal-header h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--rag-text);
+}
+
+.rag-modal-close {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--rag-text-muted);
+    transition: var(--rag-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rag-modal-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--rag-text);
+}
+
+.rag-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    scrollbar-width: thin;
+}
+
+.rag-modal-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.rag-modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.rag-modal-body::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 10px;
+}
+
+.rag-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--rag-transition);
+}
+
+.rag-section:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.rag-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.rag-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+}
+
+.rag-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.rag-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3f3f46;
+    transition: 0.25s;
+    border-radius: 34px;
+}
+
+.rag-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.25s;
+    border-radius: 50%;
+}
+
+input:checked + .rag-slider {
+    background-color: var(--rag-accent);
+}
+
+input:checked + .rag-slider:before {
+    transform: translateX(22px);
+}
+
+.rag-info {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--rag-text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.rag-dropzone {
+    border: 2px dashed var(--rag-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--rag-transition);
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.rag-dropzone.rag-drag-over {
+    border-color: var(--rag-accent);
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.rag-dropzone i {
+    font-size: 2.5rem;
+    color: var(--rag-accent);
+    margin-bottom: 0.75rem;
+}
+
+.rag-dropzone p {
+    margin: 0.5rem 0;
+    color: var(--rag-text-muted);
+}
+
+.rag-small {
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+}
+
+.rag-btn-small {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: var(--rag-text);
+    font-size: 0.8rem;
+    transition: var(--rag-transition);
+    margin: 0 4px;
+}
+
+.rag-btn-small:hover {
+    background: var(--rag-accent);
+    border-color: var(--rag-accent);
+    color: white;
+}
+
+.rag-progress-area {
+    margin-top: 1rem;
+}
+
+.rag-progress-bar {
+    height: 6px;
+    background: #2a2a2e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.rag-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--rag-accent);
+    transition: width 0.3s ease-out;
+    border-radius: 10px;
+}
+
+.rag-progress-text {
+    font-size: 0.75rem;
+    margin-top: 8px;
+    color: var(--rag-text-muted);
+    font-family: monospace;
+}
+
+.rag-stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rag-border);
+}
+
+.rag-files-list {
+    max-height: 280px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+}
+
+.rag-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: var(--rag-transition);
+    border-radius: 12px;
+}
+
+.rag-file-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.rag-file-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.rag-file-chunks {
+    font-size: 0.7rem;
+    background: rgba(59, 130, 246, 0.15);
+    padding: 3px 10px;
+    border-radius: 30px;
+    margin: 0 10px;
+    color: var(--rag-accent);
+}
+
+.rag-delete-file {
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 1.1rem;
+    transition: var(--rag-transition);
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.rag-delete-file:hover {
+    opacity: 1;
+    color: var(--rag-danger);
+    background: var(--rag-danger-bg);
+}
+
+.rag-btn-danger {
+    background: var(--rag-danger-bg);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--rag-danger);
+    padding: 6px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: var(--rag-transition);
+}
+
+.rag-btn-danger:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: var(--rag-danger);
+}
+
+.rag-btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    color: var(--rag-text);
+    font-size: 0.85rem;
+    transition: var(--rag-transition);
+}
+
+.rag-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.rag-modal-footer {
+    padding: 1rem 1.75rem;
+    border-top: 1px solid var(--rag-border);
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 28px 28px;
+}
+
+.rag-empty,
+.rag-loading,
+.rag-error {
+    text-align: center;
+    padding: 2rem;
+    color: var(--rag-text-muted);
+    font-style: italic;
+}

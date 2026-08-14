@@ -1,0 +1,328 @@
+/* ==========================================
+   INPUT AREA - CLEAN & STABLE
+   ========================================== */
+
+.input-area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    background: linear-gradient(180deg, transparent, var(--bg-app) 40%);
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.input-container {
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    pointer-events: auto;
+}
+
+.input-wrapper {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== MODEL SELECTOR ===== */
+.model-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.model-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.model-btn:hover {
+    background: #27272a;
+    color: var(--text-primary);
+}
+
+.model-btn:focus-visible {
+    outline: none;
+    background: #27272a;
+}
+
+.model-dropdown {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 0;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 8px;
+    min-width: 200px;
+    max-height: 280px;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 100;
+}
+
+.model-dropdown.hidden {
+    display: none;
+}
+
+.model-option {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.model-option:hover {
+    background: #27272a;
+    color: var(--text-primary);
+}
+
+.model-option.active {
+    background: rgba(6, 182, 212, 0.1);
+    color: var(--accent-cyan);
+    font-weight: 500;
+}
+
+.model-option.active::after {
+    content: "✓";
+    font-size: 1rem;
+}
+
+/* ===== TEXTAREA ===== */
+textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+    max-height: 200px;
+    padding: 10px 0;
+    outline: none;
+    line-height: 1.5;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===== ACTION BUTTON ===== */
+.action-btn {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: var(--text-primary);
+    color: var(--bg-app);
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.action-btn:focus-visible {
+    outline: none;
+    transform: scale(0.95);
+}
+
+.action-btn.send-mode {
+    background: var(--text-primary);
+    color: var(--bg-app);
+}
+
+.action-btn.send-mode:hover {
+    background: var(--accent-cyan);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.action-btn.stop-mode {
+    background: #ef4444;
+    color: white;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.action-btn.stop-mode:hover {
+    background: #dc2626;
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ===== DISCLAIMER ===== */
+.disclaimer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.disclaimer.hidden {
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 0;
+}
+
+/* ===== DROPDOWN MENU ITEMS ===== */
+.dropdown-menu-item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-menu-item i {
+    width: 20px;
+    font-size: 1rem;
+}
+
+.dropdown-menu-item:hover {
+    background: #27272a;
+    color: var(--text-primary);
+}
+
+.dropdown-menu-item.active {
+    background: rgba(6, 182, 212, 0.1);
+    color: var(--accent-cyan);
+}
+
+.dropdown-back-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-back-btn:hover {
+    background: rgba(6, 182, 212, 0.1);
+}
+
+/* ===== FILE ATTACHMENT ===== */
+.file-attachment-container {
+    margin-bottom: 8px;
+    min-height: 36px;
+}
+
+.file-chips-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* Single file-chip rule (consolidated) */
+.file-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px solid var(--accent-cyan);
+    border-radius: 40px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    backdrop-filter: blur(4px);
+    max-width: 220px;
+}
+
+.file-chip-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.file-chip-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.file-chip-remove {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 4px;
+    border-radius: 50%;
+    transition: 0.2s;
+    flex-shrink: 0;
+}
+
+.file-chip-remove:hover {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.2);
+}
+
+/* ===== DRAG & DROP ===== */
+.input-container.drag-over .input-wrapper {
+    border: 2px dashed var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.05);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+}
+
+/* ===== WELCOME MODE OVERRIDES (minimal, JS handles positioning) ===== */
+body.welcome-mode .disclaimer {
+    display: none !important;
+}

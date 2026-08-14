@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trykairos.vercel.app/sitemap.xml
